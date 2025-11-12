@@ -21,25 +21,25 @@ const fadeIn = (delay = 0) => ({
 // Tech pyramid using skillicons (icons per skill)
 function TechPyramidIcons() {
   const rows = [
-    // 1. FRONTEND: Ligne mta3 l-Frontend (7 skills)
+    // 1. FRONTEND: L
     [
       { key: "html", label: "HTML" },
       { key: "css", label: "CSS" },
       { key: "js", label: "JavaScript" },
       { key: "react", label: "React" },
-      { key: "tailwind", label: "Tailwind CSS" }, // 7aṭṭineha m3a l-Frontend
-      { key: "typescript", label: "TypeScript" }, // 7aṭṭineha m3a l-Frontend
-      { key: "wordpress", label: "WordPress" }, // 7aṭṭineha m3a l-Frontend
+      { key: "tailwind", label: "Tailwind CSS" }, 
+      { key: "typescript", label: "TypeScript" }, 
+      { key: "wordpress", label: "WordPress" }, 
     ],
-    // 2. BACKEND: Ligne mta3 l-Backend (5 skills)
+    // 2. BACKEND: 
     [
       { key: "nodejs", label: "Node.js" },
       { key: "express", label: "Express" },
       { key: "mongodb", label: "MongoDB" },
       { key: "php", label: "PHP" },
-      { key: "jwt", label: "JWT" }, // 7aṭṭineh m3a l-Backend/Security
+     
     ],
-    // 3. TOOLS / DEVOPS: Ligne mta3 l-Outils (3 skills)
+    // 3. TOOLS / DEVOPS: 
     [
       { key: "git", label: "Git" },
       { key: "github", label: "GitHub" },
@@ -47,14 +47,12 @@ function TechPyramidIcons() {
     ],
   ];
 
-  // widths produce the inverted pyramid visual - RAPPEL: l-visual 7asb l-7ajm mta3 koull ligne (wide, medium, narrow)
-  // L'ordre des lignes t'wa ywalli: Frontend (widest), Backend (medium), Tools (narrowest).
   const widths = ["w-full", "w-4/5 md:w-2/3", "w-1/2 md:w-1/3"];
 
   return (
     <div className="mt-10 mb-10">
       {" "}
-      {/* ZEDNA L-ESPACE (mt-10) */}
+     
       <div className="flex flex-col gap-4 items-center">
         {rows.map((row, idx) => (
           <div
@@ -94,7 +92,7 @@ const projectsData = [
     tech: ["React", "Node.js", "Express", "MongoDB", "JWT", "TailwindCSS"],
     githubUrl: "https://github.com/ThomasKoob/artRISE",
     liveUrl: null,
-    // CHECK THIS PATH CAREFULLY!
+    
     imageUrl: "/popAUC-pic.png",
   },
   {
@@ -104,7 +102,7 @@ const projectsData = [
     tech: ["React", "Tailwind CSS", "LocalStorage"],
     githubUrl: "https://github.com/AhmedOueslati/Personal-Diary",
     liveUrl: "https://meek-swan-8e0db1.netlify.app",
-    imageUrl: "/Personal-Diary-pic.png",
+    imageUrl: "/personal-diary.png",
   },
   {
     title: "Travel Agency Web App",
@@ -112,7 +110,7 @@ const projectsData = [
     tech: ["React", "Tailwind CSS", "React Router"],
     githubUrl: "https://github.com/AhmedOues93/Travel-Agency-React",
     liveUrl: "https://jovial-hotteok-975682.netlify.app/",
-    imageUrl:  "/Travel-Agency-pic.png",
+    imageUrl:  "/travel-agency.png",
   },
 ];
 const education = [
@@ -219,7 +217,7 @@ export default function Home() {
               and a passion for modern JavaScript and creative web solutions.
             </motion.p>
 
-            {/* Tech pyramid (icon-based, inverted) - FINAL REFINED LAYOUT */}
+            
             <motion.div className="mt-6 mb-10" variants={fadeIn(0.6)}>
               <TechPyramidIcons />
             </motion.div>

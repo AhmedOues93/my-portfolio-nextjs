@@ -12,14 +12,15 @@ export default function ProjectCard({
 }) {
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
-      {/* 3. REPLACE PLACEHOLDER WITH IMAGE COMPONENT */}
+      
       {imageUrl && (
-        // ZEDNA FIL HEIGHT MIN h-48 ILA h-64
-        <div className="relative h-64 w-full">
+       
+        <div className="relative h-64 w-full"> 
           <Image
             src={imageUrl}
             alt={`Screenshot of ${title}`}
-            
+            // Hēdhi hiya l-façon s7ī7a bch t5allīha tkaffer fi l-Next.js l-jdīd
+            fill={true} 
             className="object-cover" // object-fit: cover
           />
         </div>
