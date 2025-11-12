@@ -18,37 +18,66 @@ const fadeIn = (delay = 0) => ({
   transition: { duration: 0.7, ease: "easeInOut", delay },
 });
 
-// Tech pyramid component (inverted pyramid visual)
-function TechPyramid() {
+// Tech pyramid using skillicons (icons per skill)
+function TechPyramidIcons() {
   const rows = [
-    ["HTML", "CSS", "JavaScript", "React", "Node.js", "Express"], // top (widest)
-    ["MongoDB", "Tailwind", "Git", "GitHub"],
-    ["TypeScript", "JWT"],
-    ["CI/CD"],
+    // 1. FRONTEND: Ligne mta3 l-Frontend (7 skills)
+    [
+      { key: "html", label: "HTML" },
+      { key: "css", label: "CSS" },
+      { key: "js", label: "JavaScript" },
+      { key: "react", label: "React" },
+      { key: "tailwind", label: "Tailwind CSS" }, // 7aṭṭineha m3a l-Frontend
+      { key: "typescript", label: "TypeScript" }, // 7aṭṭineha m3a l-Frontend
+      { key: "wordpress", label: "WordPress" }, // 7aṭṭineha m3a l-Frontend
+    ],
+    // 2. BACKEND: Ligne mta3 l-Backend (5 skills)
+    [
+      { key: "nodejs", label: "Node.js" },
+      { key: "express", label: "Express" },
+      { key: "mongodb", label: "MongoDB" },
+      { key: "php", label: "PHP" },
+      { key: "jwt", label: "JWT" }, // 7aṭṭineh m3a l-Backend/Security
+    ],
+    // 3. TOOLS / DEVOPS: Ligne mta3 l-Outils (3 skills)
+    [
+      { key: "git", label: "Git" },
+      { key: "github", label: "GitHub" },
+      { key: "docker", label: "CI/CD" },
+    ],
   ];
 
-  const widths = [
-    "w-full md:w-11/12",
-    "w-11/12 md:w-3/4",
-    "w-10/12 md:w-2/5",
-    "w-8/12 md:w-1/5",
-  ];
+  // widths produce the inverted pyramid visual - RAPPEL: l-visual 7asb l-7ajm mta3 koull ligne (wide, medium, narrow)
+  // L'ordre des lignes t'wa ywalli: Frontend (widest), Backend (medium), Tools (narrowest).
+  const widths = ["w-full", "w-4/5 md:w-2/3", "w-1/2 md:w-1/3"];
 
   return (
-    <div className="mt-6 mb-10">
-      <div className="flex flex-col gap-3 items-center">
+    <div className="mt-10 mb-10">
+      {" "}
+      {/* ZEDNA L-ESPACE (mt-10) */}
+      <div className="flex flex-col gap-4 items-center">
         {rows.map((row, idx) => (
           <div
             key={idx}
-            className={`flex flex-wrap justify-center gap-2 ${widths[idx]} mx-auto`}
+            className={`flex flex-wrap justify-center gap-4 ${widths[idx]} mx-auto p-2 border-b border-gray-200 last:border-b-0`}
           >
             {row.map((skill) => (
-              <span
-                key={skill}
-                className="px-3 py-1 rounded-full bg-slate-100 text-gray-800 text-sm font-medium"
+              <div
+                key={skill.key}
+                className="flex flex-col items-center gap-1"
+                title={skill.label}
               >
-                {skill}
-              </span>
+                <img
+                  src={`https://skillicons.dev/icons?i=${skill.key}`}
+                  alt={skill.label}
+                  className="h-10 md:h-12 lg:h-14"
+                  width={56}
+                  height={56}
+                />
+                <span className="text-xs text-gray-600 hidden md:block">
+                  {skill.label}
+                </span>
+              </div>
             ))}
           </div>
         ))}
@@ -65,14 +94,17 @@ const projectsData = [
     tech: ["React", "Node.js", "Express", "MongoDB", "JWT", "TailwindCSS"],
     githubUrl: "https://github.com/ThomasKoob/artRISE",
     liveUrl: null,
+    // CHECK THIS PATH CAREFULLY!
+    imageUrl: "/popAUC-pic.png",
   },
   {
-    title: "Personal Diary App",
+    title: "Personal Diary",
     description:
       "Personal diary web app with notes management, validation and a clean UI.",
     tech: ["React", "Tailwind CSS", "LocalStorage"],
     githubUrl: "https://github.com/AhmedOueslati/Personal-Diary",
     liveUrl: "https://meek-swan-8e0db1.netlify.app",
+    imageUrl: "/Personal-Diary-pic.png",
   },
   {
     title: "Travel Agency Web App",
@@ -80,9 +112,9 @@ const projectsData = [
     tech: ["React", "Tailwind CSS", "React Router"],
     githubUrl: "https://github.com/AhmedOues93/Travel-Agency-React",
     liveUrl: "https://jovial-hotteok-975682.netlify.app/",
+    imageUrl:  "/Travel-Agency-pic.png",
   },
 ];
-
 const education = [
   {
     title: "Full-Stack Web & App Development (MERN)",
@@ -112,6 +144,27 @@ const education = [
   },
 ];
 
+const certificates = [
+  {
+    title: "Agile Software Development: Scrum for Developers",
+    issuer:
+      "Project Management Institute (important for professional teamwork)",
+  },
+  {
+    title: "React: Using TypeScript",
+    issuer: "LinkedIn (shows focus on modern, stable tech)",
+  },
+  {
+    title: "Learning TypeScript",
+    issuer: "LinkedIn Learning Community",
+  },
+  {
+    title: "Career Essentials in Software Development",
+    issuer:
+      "Microsoft / LinkedIn (demonstrates motivation for professional upskilling)",
+  },
+];
+
 const softSkills = [
   "Teamwork",
   "Willingness to learn",
@@ -134,7 +187,7 @@ export default function Home() {
       <section
         id="home"
         className="flex items-center justify-center min-h-screen
-                   bg-gradient-to-b from-cyan-50 to-white px-4 py-24"
+                        bg-gradient-to-b from-cyan-50 to-white px-4 py-24"
       >
         <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-center gap-12 md:gap-16 relative z-10">
           {/* Text column */}
@@ -166,27 +219,9 @@ export default function Home() {
               and a passion for modern JavaScript and creative web solutions.
             </motion.p>
 
-            {/* Tech pyramid (inverted) */}
+            {/* Tech pyramid (icon-based, inverted) - FINAL REFINED LAYOUT */}
             <motion.div className="mt-6 mb-10" variants={fadeIn(0.6)}>
-              <TechPyramid />
-            </motion.div>
-
-            <motion.div
-              className="flex justify-center md:justify-start gap-5 flex-wrap"
-              variants={fadeIn(0.7)}
-            >
-              <a
-                href="#projects"
-                className="bg-cyan-700 text-white font-medium px-6 py-3 rounded-lg shadow-md hover:bg-cyan-800 transition-all duration-200 transform hover:-translate-y-0.5"
-              >
-                My Projects
-              </a>
-              <a
-                href="#contact"
-                className="bg-transparent text-cyan-700 font-medium px-6 py-3 rounded-lg border-2 border-cyan-700 hover:bg-cyan-100 transition-all duration-200 transform hover:-translate-y-0.5"
-              >
-                Contact
-              </a>
+              <TechPyramidIcons />
             </motion.div>
           </motion.div>
 
@@ -234,6 +269,7 @@ export default function Home() {
                 <IconBriefcase size={26} /> Education & Qualifications
               </h2>
 
+              {/* Education Timeline */}
               <div className="space-y-5 border-l-2 border-cyan-700 pl-5">
                 {education.map((edu) => (
                   <div key={edu.title} className="relative">
@@ -251,42 +287,9 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-
-              {/* Certificates block */}
-              <div className="mt-8">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-                  Zertifikate / Certificates
-                </h3>
-                <ul className="list-disc list-inside text-gray-700 space-y-2">
-                  <li>
-                    <strong>
-                      Agile Software Development: Scrum for Developers
-                    </strong>{" "}
-                    — Project Management Institute (important for professional
-                    teamwork)
-                  </li>
-                  <li>
-                    <strong>React: Using TypeScript</strong> — LinkedIn (shows
-                    focus on modern, stable tech)
-                  </li>
-                  <li>
-                    <strong>Learning TypeScript</strong> — LinkedIn Learning
-                    Community
-                  </li>
-                  <li>
-                    <strong>WordPress Essentiel Training</strong> — LinkedIn
-                    (relevant for re-entry into OSS / PHP)
-                  </li>
-                  <li>
-                    <strong>Career Essentials in Software Development</strong> —
-                    Microsoft / LinkedIn (demonstrates motivation for
-                    professional upskilling)
-                  </li>
-                </ul>
-              </div>
             </div>
 
-            {/* SKILLS & LANGUAGES (right on desktop) */}
+            {/* SKILLS & LANGUAGES & CERTIFICATES (right on desktop) */}
             <div className="w-full space-y-6">
               <section>
                 <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4 flex items-center gap-3">
@@ -319,6 +322,23 @@ export default function Home() {
                       {lang}
                     </span>
                   ))}
+                </div>
+
+                {/* CERTIFICATES - Consistent Styling with ICON ADDED */}
+                <div className="mt-8">
+                  <h3 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4 flex items-center gap-3">
+                    <IconBriefcase size={26} /> Certificates
+                  </h3>
+                  <div className="space-y-4">
+                    {certificates.map((cert, index) => (
+                      <div key={index}>
+                        <h4 className="text-xl font-bold text-gray-900">
+                          {cert.title}
+                        </h4>
+                        <p className="text-gray-600">{cert.issuer}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </section>
             </div>

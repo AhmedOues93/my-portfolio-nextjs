@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { IconBrandGithub, IconWorld } from "@tabler/icons-react";
 
 export default function ProjectCard({
@@ -7,12 +8,23 @@ export default function ProjectCard({
   tech = [],
   githubUrl,
   liveUrl,
+  imageUrl,
 }) {
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
-      <div className="h-48 w-full bg-gray-100 flex items-center justify-center text-gray-400">
-        Image placeholder
-      </div>
+      {/* 3. REPLACE PLACEHOLDER WITH IMAGE COMPONENT */}
+      {imageUrl && (
+        // ZEDNA FIL HEIGHT MIN h-48 ILA h-64
+        <div className="relative h-64 w-full">
+          <Image
+            src={imageUrl}
+            alt={`Screenshot of ${title}`}
+            
+            className="object-cover" // object-fit: cover
+          />
+        </div>
+      )}
+      {/* END IMAGE SECTION */}
 
       <div className="p-6 flex-grow flex flex-col">
         <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">

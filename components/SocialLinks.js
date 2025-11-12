@@ -13,7 +13,7 @@ export default function SocialLinks() {
     // 2. 'top-24': Positioniert es 6rem (96px) von oben (direkt unter deiner Navbar).
     // 3. 'top-1/2 -translate-y-1/2' (die alte Position) wurde entfernt.
     //
-    // هذا الكود الجديد:
+ 
     <div className="hidden md:flex flex-col fixed left-0 top-24 z-40">
       {/* (Restlicher Inhalt bleibt gleich) */}
       <div className="flex flex-col gap-2 p-2 bg-white shadow-lg rounded-r-lg border border-l-0">
@@ -41,7 +41,7 @@ export default function SocialLinks() {
 
         {/* Lebenslauf (CV) Download Link */}
         <Link
-          href="/Lebenslauf_AhmedOueslati93.pdf"
+          href="/Ahmed-Oueslati-12-11-25.pdf"
           download
           title="Lebenslauf herunterladen (CV)"
           className="p-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-md transition-all"
